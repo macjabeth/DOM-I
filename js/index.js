@@ -126,9 +126,9 @@ ctaButton.addEventListener('mouseover', function (event) {
   this.style.color = '#212121';
 });
 
-ctaButton.addEventListener('mouseout', (event) => {
-  ctaButton.style.backgroundColor = '#388E3C';
-  ctaButton.style.color = '#FFFFFF';
+ctaButton.addEventListener('mouseout', function (event) {
+  this.style.backgroundColor = '#388E3C';
+  this.style.color = '#FFFFFF';
 });
 
 // let's bring it aroooouuund town
@@ -137,8 +137,8 @@ ctaButton.addEventListener('click', (event) => {
   let rotation = 0;
   const rotateID = setInterval(() => {
     rotation += 7;
-    document.querySelectorAll('div').forEach(node => {
-      node.style.transform = `rotate(${rotation}deg)`;
+    document.querySelectorAll('div').forEach(({ style }) => {
+      style.transform = `rotate(${rotation}deg)`;
     });
     if (rotation > 360) {
       ctaButton.textContent = 'Ooooh yeah...';
