@@ -68,7 +68,22 @@ const footerCopyright = sections['footer'].firstElementChild;
 /* (>^_^>) Lo and behold... */
 
 // handle header
-navLinks.forEach((el, i) => { el.textContent = siteContent['nav'][`nav-item-${i}`]; });
+navLinks.forEach((el, i) => {
+  el.textContent = siteContent['nav'][`nav-item-${i + 1}`];
+  // set text colour
+  el.style.color = 'green';
+});
+
+const createLink = (text) => {
+  const link = document.createElement('a');
+  link.textContent = text;
+  link.style.color = 'green';
+  return link;
+};
+
+sections['nav'].prepend(createLink('Home'));
+sections['nav'].appendChild(createLink('Partners'));
+
 logoImg.setAttribute('src', siteContent['nav']['img-src']);
 
 // handle cta
