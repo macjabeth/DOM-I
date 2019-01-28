@@ -64,3 +64,36 @@ const contactChildren = sections['contact'].children;
 
 // footer selector
 const footerCopyright = sections['footer'].firstElementChild;
+
+/* (>^_^>) Lo and behold... */
+
+// handle header
+navLinks.forEach((el, i) => { el.textContent = siteContent['nav'][`nav-item-${i}`]; });
+logoImg.setAttribute('src', siteContent['nav']['img-src']);
+
+// handle cta
+ctaHeader.textContent = siteContent['cta']['h1'];
+ctaButton.textContent = siteContent['cta']['button'];
+ctaImg.setAttribute('src', siteContent['cta']['img-src']);
+
+// handle main-content
+const mainContentKeys = Object.keys(siteContent['main-content']);
+
+['h4', 'content'].forEach(type => {
+  const selector = type === 'h4' ? mainHeaders : mainContent;
+  mainContentKeys.filter(v => v.endsWith(type)).forEach((v, i) => {
+    selector[i].textContent = siteContent['main-content'][v];
+  });
+});
+
+middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
+
+// handle contact
+const contactKeys = Object.keys(siteContent['contact']);
+
+contactKeys.forEach((v, i) => {
+  contactChildren[i].textContent = siteContent['contact'][v];
+});
+
+// handle footer
+footerCopyright.textContent = siteContent['footer']['copyright'];
