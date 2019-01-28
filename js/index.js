@@ -112,3 +112,37 @@ contactKeys.forEach((v, i) => {
 
 // handle footer
 footerCopyright.textContent = siteContent['footer']['copyright'];
+
+// make things look prettier
+
+document.body.style.backgroundColor = 'lightgrey';
+
+ctaButton.style.backgroundColor = '#388E3C';
+ctaButton.style.color = '#FFFFFF';
+ctaButton.style.transition = '0.3s';
+
+ctaButton.addEventListener('mouseover', function (event) {
+  this.style.backgroundColor = '#8BC34A';
+  this.style.color = '#212121';
+});
+
+ctaButton.addEventListener('mouseout', (event) => {
+  ctaButton.style.backgroundColor = '#388E3C';
+  ctaButton.style.color = '#FFFFFF';
+});
+
+// let's bring it aroooouuund town
+
+ctaButton.addEventListener('click', (event) => {
+  let rotation = 0;
+  const rotateID = setInterval(() => {
+    rotation += 7;
+    document.querySelectorAll('div').forEach(node => {
+      node.style.transform = `rotate(${rotation}deg)`;
+    });
+    if (rotation > 360) {
+      ctaButton.textContent = 'Ooooh yeah...';
+      clearInterval(rotateID);
+    }
+  }, 100);
+});
